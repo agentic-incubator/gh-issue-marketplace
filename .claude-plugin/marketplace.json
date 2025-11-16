@@ -1,0 +1,29 @@
+{
+  "name": "gh-issue-marketplace",
+  "owner": {
+    "name": "Chris Phillipson",
+    "email": "pacphi@users.noreply.github.com"
+  },
+  "metadata": {
+    "description": "Claude Code marketplace for GitHub issue automation plugins",
+    "version": "1.0.0",
+    "pluginRoot": "plugins"
+  },
+  "plugins": [
+    {
+      "name": "github-issue-tools",
+      "source": "./plugins/github-issue-tools",
+      "description": "Automate GitHub issue creation and implementation with intelligent workflows",
+      "version": "1.0.0",
+      "author": "Chris Phillipson",
+      "homepage": "https://github.com/agentic-incubator/gh-issue-marketplace",
+      "repository": {
+        "type": "git",
+        "url": "https://github.com/agentic-incubator/gh-issue-marketplace.git"
+      },
+      "license": "MIT",
+      "keywords": ["github", "issues", "automation", "workflow", "branching"],
+      "category": "developer-tools"
+    }
+  ]
+}

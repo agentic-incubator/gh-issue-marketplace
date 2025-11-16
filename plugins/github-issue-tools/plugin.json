@@ -1,0 +1,26 @@
+{
+  "name": "github-issue-tools",
+  "version": "1.0.0",
+  "description": "Automate GitHub issue creation and implementation with intelligent workflows",
+  "author": "Chris Phillipson",
+  "homepage": "https://github.com/agentic-incubator/gh-issue-marketplace",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/agentic-incubator/gh-issue-marketplace.git"
+  },
+  "license": "MIT",
+  "keywords": ["github", "issues", "automation", "workflow", "branching"],
+  "category": "developer-tools",
+  "skills": {
+    "github-issue-creator": {
+      "name": "github-issue-creator",
+      "description": "Create GitHub issues from templates with automatic label management and document uploads",
+      "path": "skills/github-issue-creator"
+    },
+    "github-issue-implementer": {
+      "name": "github-issue-implementer",
+      "description": "Read GitHub issues, create feature branches, and implement solutions with automated action planning",
+      "path": "skills/github-issue-implementer"
+    }
+  }
+}
