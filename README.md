@@ -426,6 +426,21 @@ claude plugin marketplace list
 claude plugin marketplace add agentic-incubator/gh-issue-marketplace
 ```
 
+### Updating the Marketplace
+
+To update the marketplace to get the latest plugins and skills:
+
+```bash
+# Update marketplace from command line
+claude plugin marketplace update agentic-incubator/gh-issue-marketplace
+```
+
+Or from within a Claude Code session:
+
+```text
+/plugin marketplace update agentic-incubator/gh-issue-marketplace
+```
+
 ### Plugin Installation Fails
 
 ```bash
