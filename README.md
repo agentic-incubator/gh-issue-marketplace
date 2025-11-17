@@ -4,11 +4,13 @@ A Claude Code marketplace providing intelligent automation for GitHub issue work
 
 ## Overview
 
-This marketplace contains the **github-issue-tools** plugin, which provides two powerful skills for automating GitHub issue management:
+This marketplace contains the **github-issue-tools** plugin, which provides three powerful skills for automating GitHub issue workflows:
 
 - **github-issue-creator**: Automates creation of GitHub issues from templates with intelligent label management and document uploads
   - Includes example GitHub issue templates (bug report, feature request, question)
 - **github-issue-implementer**: Reads GitHub issues, creates feature branches, generates action plans, and implements solutions
+- **github-pr-creator**: Creates GitHub Pull Requests from feature branches with issue references and template adherence
+  - Includes PR template for comprehensive documentation
 
 ## Prerequisites
 
@@ -201,6 +203,100 @@ Example:
 - Issue: "#42: [Feature] Transparent Secrets Management with SOPS"
 - Branch: `feature/transparent-secrets-management-with-sops`
 
+### Skill 3: GitHub PR Creator
+
+This skill automates the creation of GitHub Pull Requests from feature branches with intelligent template population and issue references.
+
+#### When to Use
+
+- Ready to create a PR after implementing changes on a feature branch
+- Want to ensure PR follows project template standards
+- Need automatic extraction of changes, commits, and issue context
+- Want intelligent auto-fill of deterministic PR template fields
+- Completing work started with github-issue-implementer skill
+
+#### Example Usage
+
+After implementing changes on a branch:
+
+```
+Create a pull request for my changes
+```
+
+Or explicitly:
+
+```
+Use the github-pr-creator skill to create a PR
+```
+
+Claude will:
+
+1. Verify you're on a feature branch (not main/master)
+2. Extract issue number from branch name or ask for it
+3. Fetch issue details and context from GitHub
+4. Analyze git changes and commit history
+5. Auto-fill PR template with contextual information:
+   - Description from commits and issue
+   - Type of change (bug fix, feature, etc.)
+   - List of changed files
+   - Issue reference ("Fixes #N")
+6. Prompt for manual input on subjective fields:
+   - Testing details
+   - Security considerations
+   - Cost impact
+   - Breaking changes
+7. Create PR with complete, well-formatted content
+8. Display PR URL and summary
+
+#### PR Template Features
+
+The skill uses a comprehensive PR template that includes:
+
+- **Description**: Auto-filled from commits and issue context
+- **Type of Change**: Auto-detected checkboxes (bug fix, feature, docs, etc.)
+- **Changes Made**: Auto-generated list of added/modified/deleted files
+- **Testing**: Checklist for manual/unit/integration tests
+- **Test Environment**: OS, region, VM configuration
+- **Cost Impact**: For cloud deployments
+- **Security Considerations**: Security review checklist
+- **Breaking Changes**: Migration path documentation
+- **Documentation**: README, docs, changelog checklist
+- **Checklist**: Code quality standards
+- **Deployment Notes**: Special deployment instructions
+- **Reviewer Notes**: Focus areas for reviewers
+
+#### Hybrid Auto-Fill Approach
+
+The skill intelligently auto-fills deterministic fields while prompting for subjective information:
+
+**Auto-Filled:**
+- Issue reference from branch name or user input
+- PR type from issue labels, branch prefix, or commits
+- List of changed files with add/modify/delete status
+- Commit history
+- Basic description from issue title
+
+**User Prompted:**
+- Testing details and coverage
+- Security implications
+- Cost impact assessment
+- Breaking change documentation
+
+#### Integration with Other Skills
+
+Perfect workflow combining all three skills:
+
+```text
+1. Create issue:        "Create a feature request for dark mode support"
+2. Implement:           "Implement issue #42"
+3. Create PR:           "Create a pull request"
+```
+
+Each step builds on the previous:
+- Issue provides requirements and context
+- Implementer creates branch and code
+- PR creator generates comprehensive pull request
+
 ## Marketplace Structure
 
 ```text
@@ -218,8 +314,12 @@ gh-issue-marketplace/
 │           │       ├── bug_report.yml       # Bug report template
 │           │       ├── feature_request.yml  # Feature request template
 │           │       └── question.yml         # Question template
-│           └── github-issue-implementer/
-│               └── SKILL.md                 # Issue implementer skill
+│           ├── github-issue-implementer/
+│           │   └── SKILL.md                 # Issue implementer skill
+│           └── github-pr-creator/
+│               ├── SKILL.md                 # PR creator skill
+│               └── templates/
+│                   └── pull_request_template.md  # PR template
 └── README.md                                # This file
 ```
 
@@ -395,6 +495,18 @@ Then:
 ```text
 Implement the issue you just created
 ```
+
+Finally:
+
+```text
+Create a pull request for my changes
+```
+
+This complete workflow:
+1. Creates issue #42 with proper template and labels
+2. Creates branch `feature/dark-mode-support`
+3. Implements the feature with action plan
+4. Creates PR with auto-filled template referencing issue #42
 
 ### Example 2: Bug Report with Logs
 

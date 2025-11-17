@@ -21,6 +21,11 @@
       "name": "github-issue-implementer",
       "description": "Read GitHub issues, create feature branches, and implement solutions with automated action planning",
       "path": "skills/github-issue-implementer"
+    },
+    "github-pr-creator": {
+      "name": "github-pr-creator",
+      "description": "Create GitHub Pull Requests from feature branches with issue references and template adherence",
+      "path": "skills/github-pr-creator"
     }
   }
 }
